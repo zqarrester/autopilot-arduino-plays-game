@@ -1,0 +1,35 @@
+#include <Servo.h>
+
+Servo servo1, servo2, servo3;
+
+int servo1Pin = 9;
+int servo2Pin = 10;
+int servo3Pin = 11;
+
+int delayTime1 = 10000; // 10 detik
+int delayTime2 = 20000; // 20 detik
+int delayTime3 = 30000; // 30 detik
+
+void setup() {
+  servo1.attach(servo1Pin);
+  servo2.attach(servo2Pin);
+  servo3.attach(servo3Pin);
+}
+
+void loop() {
+  moveServo(servo1, delayTime1);
+  moveServo(servo2, delayTime2);
+  moveServo(servo3, delayTime3);
+}
+
+void moveServo(Servo servo, int delayTime) {
+  for (int pos = 0; pos <= 45; pos++) {
+    servo.write(pos);
+    delay(100);
+  }
+  delay(delayTime);
+  for (int pos = 45; pos >= 0; pos--) {
+    servo.write(pos);
+    delay(100);
+  }
+}
